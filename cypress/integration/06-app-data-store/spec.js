@@ -9,6 +9,18 @@ beforeEach(() => {
 beforeEach(() => {
   cy.visit('/')
 })
+
+beforeEach(function stubRandomId() {
+  let count = 1
+  cy.window().its('Math').then(Math => {
+    cy
+      .stub(Math, 'random', () => {
+        return `0.${count++}`
+      })
+      .as('random') // save reference to the spy
+  })
+})
+
 /**
  * Adds a todo item
  * @param {string} text
@@ -18,11 +30,12 @@ const addItem = text => {
 }
 
 it('adds items to store', () => {
-  addItem('something')
-  addItem('something else')
   // get application's window
   // then get app, $store, state, todos
   // it should have 2 items
+  addItem('something')
+  addItem('something else')
+  cy.window().its('app.$store.state.todos').should('have.length', 2)
 })
 
 it('creates an item with id 1', () => {
@@ -45,12 +58,10 @@ it('creates an item with id 1', () => {
   })
 })
 
-// stub function Math.random using cy.stub
-it('creates an item with id using a stub', () => {
-  // get the application's "window.Math" object using cy.window
-  // replace Math.random with cy.stub and store the stub under an alias
-  // create a todo using addItem("foo")
-  // and then confirm that the stub was called once
+it('calls spy twice', () => {
+  addItem('something')
+  addItem('else')
+  cy.get('@random').should('have.been.calledTwice')
 })
 
 it('puts the todo items into the data store', () => {
@@ -59,4 +70,20 @@ it('puts the todo items into the data store', () => {
   // add a couple of items
   // get the data store
   // check its contents
+  addItem('something')
+  addItem('else')
+  cy
+    .window()
+    .its('app.$store.state.todos')
+    .should('deep.equal', [{
+        title: 'something',
+        completed: false,
+        id: '1'
+      },
+      {
+        title: 'else',
+        completed: false,
+        id: '2'
+      }
+    ])
 })
