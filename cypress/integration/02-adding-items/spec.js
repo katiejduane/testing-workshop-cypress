@@ -1,7 +1,21 @@
 /// <reference types="cypress" />
+// above is the easiest way to see/use 'IntelliSense' when typing Cypress commands
+// you can also create a common jsconfig.json file in the root of the project. In that file, you can 
+// include the Cypress module and your test folders.
+// {
+//   "include": [
+//     "./node_modules/cypress",
+//     "cypress/**/*.js"
+//   ]
+// }
+// https://docs.cypress.io/guides/tooling/intelligent-code-completion.html#Writing-Tests
+
+beforeEach(() => {
+  cy.visit('localhost:3000')
+})
+
 it('loads', () => {
   // application should be running at port 3000
-  cy.visit('localhost:3000')
   cy.contains('h1', 'todos')
 })
 

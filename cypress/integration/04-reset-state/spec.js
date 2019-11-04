@@ -1,7 +1,12 @@
 /// <reference types="cypress" />
+
 beforeEach(() => {
-  // application should be running at port 3000
-  // and the "localhost:3000" is set as "baseUrl" in "cypress.json"
+  cy.request('POST', '/reset', {
+    todos: []
+  })
+})
+
+beforeEach(() => {
   cy.visit('/')
 })
 /**
@@ -12,7 +17,7 @@ const addItem = text => {
   cy.get('.new-todo').type(`${text}{enter}`)
 }
 it('adds two items', () => {
-  addItem('first item')
-  addItem('second item')
+  addItem('first NEW item')
+  addItem('second NEW item')
   cy.get('li.todo').should('have.length', 2)
 })

@@ -1,59 +1,14 @@
 {
   "todos": [
     {
-      "title": "buy a horse ",
+      "title": "first NEW item",
       "completed": false,
-      "id": "5601565698"
+      "id": "8826962272"
     },
     {
-      "title": "swim some laps ",
+      "title": "second NEW item",
       "completed": false,
-      "id": "3613321357"
-    },
-    {
-      "title": "simple",
-      "completed": false,
-      "id": "0076848054"
-    },
-    {
-      "title": "hard",
-      "completed": false,
-      "id": "8098761523"
-    },
-    {
-      "title": "me too",
-      "completed": false,
-      "id": "8781659848"
-    },
-    {
-      "title": "item: 1",
-      "completed": false,
-      "id": "4657163083"
-    },
-    {
-      "title": "item: 2",
-      "completed": false,
-      "id": "0360095048"
-    },
-    {
-      "title": "item: 3",
-      "completed": false,
-      "id": "1302719560"
-    },
-    {
-      "title": "item: 4",
-      "completed": false,
-      "id": "4342904422"
-    },
-    {
-      "title": "item: 5",
-      "completed": false,
-      "id": "1422588127"
-    },
-    {
-      "title": "Item 703037638988",
-      "completed": false,
-      "id": "9703719258"
+      "id": "9912637432"
     }
   ]
 }
