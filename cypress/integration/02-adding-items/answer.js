@@ -40,7 +40,9 @@ it('can delete an item', () => {
     .should('exist')
     .find('.destroy')
     // use force: true because we don't wsnt to hover
-    .click({ force: true })
+    .click({
+      force: true
+    })
 
   // confirm the deleted item is gone from the dom
   cy.contains('li.todo', 'simple').should('not.exist')

@@ -6,10 +6,13 @@
     "start": "./node_modules/.bin/json-server --static . data.json --middlewares ./node_modules/json-server-reset",
     "reset": "node reset-db.js",
     "reset:db": "npm run reset",
-    "reset:database": "npm run reset"
+    "reset:database": "npm run reset",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
   },
   "dependencies": {
     "json-server": "0.15.1",
     "json-server-reset": "1.3.0"
-  }
+  },
+  "devDependencies": {}
 }
