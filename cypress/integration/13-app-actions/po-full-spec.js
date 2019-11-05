@@ -4,7 +4,10 @@
 // check this file using TypeScript if available
 // @ts-check
 
-import { TodoPage, todoPage } from './todo-page-object'
+import {
+  TodoPage,
+  todoPage
+} from './todo-page-object'
 
 // ***********************************************
 // All of these tests are written to implement
@@ -156,7 +159,9 @@ describe('TodoMVC - React', function () {
       // label, while the checkbox is hidden
       // If you want to click on the label instead use
       //  cy.get('label[for=toggle-all]').click()
-      cy.get('.toggle-all').check({ force: true })
+      cy.get('.toggle-all').check({
+        force: true
+      })
 
       // get each todo li and ensure its class is 'completed'
       cy.get('@todos')
@@ -173,7 +178,9 @@ describe('TodoMVC - React', function () {
     it('should allow me to clear the complete state of all items', function () {
       // check and then immediately uncheck
       cy.get('.toggle-all')
-        .check({ force: true })
+        .check({
+          force: true
+        })
         .uncheck({
           force: true
         })
@@ -440,7 +447,7 @@ describe('TodoMVC - React', function () {
     it('should persist its data', function () {
       // mimicking TodoMVC tests
       // by writing out this function
-      function testState () {
+      function testState() {
         cy.get('@firstTodo')
           .should('contain', TodoPage.TODO_ITEM_ONE)
           .and('have.class', 'completed')
