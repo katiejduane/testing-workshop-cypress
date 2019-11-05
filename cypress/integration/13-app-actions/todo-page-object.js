@@ -14,7 +14,7 @@ export class TodoPage {
   todoList = '.todo-list li'
   toggleBtn = '.toggle'
   filters = '.filters'
-  clearCompleted = '.clear-completed'
+  clear = '.clear-completed'
 
   visit() {
     cy.visit('/')
@@ -85,7 +85,7 @@ export class TodoPage {
   }
 
   clearCompleted() {
-    cy.get(this.clearCompleted).click()
+    cy.get(this.clear).click()
   }
 }
 

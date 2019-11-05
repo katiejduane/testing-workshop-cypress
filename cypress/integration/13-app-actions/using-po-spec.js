@@ -18,6 +18,11 @@ describe('TodoMVC with Page Object', () => {
     const todos = todoPage.todos()
     // and check that there are 3 of them
     todos.should('have.length', 3)
+    // below the @ sign can be used because in the page object we declare it as such:
+    // cy.get(this.todoList, {
+    //   log: false
+    // }).as('todos')
+    cy.get('@todos').should('have.length', 3)
   })
 
   context('toggles items', () => {
@@ -39,9 +44,9 @@ describe('TodoMVC with Page Object', () => {
     it('completes second item', () => {
       todoPage.toggle(1)
       // this test requeries all todos, ensuring that it passes reliably
-      // todoPage.todos(0).should('not.have.class', 'completed')
-      // todoPage.todos(1).should('have.class', 'completed')
-      // todoPage.todos(2).should('not.have.class', 'completed')
+      todoPage.todos(0).should('not.have.class', 'completed')
+      todoPage.todos(1).should('have.class', 'completed')
+      todoPage.todos(2).should('not.have.class', 'completed')
     })
 
   })
