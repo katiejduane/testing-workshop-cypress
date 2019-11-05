@@ -1,4 +1,4 @@
-exports[`creates todos #0`] = 
+exports[`creates todos #0`] =
 [
   {
     "completed": false,
@@ -13,6 +13,22 @@ exports[`creates todos #0`] =
   {
     "completed": false,
     "id": "2921246518",
+    "title": "todo 2"
+  }
+];
+
+exports[`creates todos and then uses cy.window #0`] =
+[
+  {
+    "completed": false,
+    "title": "todo 0"
+  },
+  {
+    "completed": false,
+    "title": "todo 1"
+  },
+  {
+    "completed": false,
     "title": "todo 2"
   }
 ];

@@ -23,9 +23,23 @@ import './commands'
 // https://www.cypress.io/blog/2018/10/11/halloween-theme/
 // require('cypress-dark/src/halloween')
 
-// require('cypress-pipe')
-// require('cypress-plugin-snapshots/commands')
-// require('cypress-failed-log')
+// Require third party modules/custom commands:
+require('cypress-xpath')
+require('cypress-pipe')
+require('cypress-plugin-snapshots/commands')
+require('cypress-failed-log')
 
 // load commands for code coverage
 // require('@cypress/code-coverage/support')
+
+// this globally requires these two functions run before each test (not test file, test)
+// so probably NOT A GOOD IDEA FOR TESTS THAT ARE SPECIFIC, like these (LOGIN would be good tho)
+// beforeEach(function resetData() {
+//     cy.request('POST', '/reset', {
+//         todos: []
+//     })
+// })
+
+// beforeEach(function visitSite() {
+//     cy.visit('/')
+// })

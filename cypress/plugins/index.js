@@ -45,7 +45,7 @@ module.exports = (on, config) => {
   // "cy.task" can be used from specs to "jump" into Node environment
   // and doing anything you might want. For example, checking "data.json" file!
   on('task', {
-    hasSavedRecord (title, ms = 3000) {
+    hasSavedRecord(title, ms = 3000) {
       debug('inside task')
       console.log(
         'looking for title "%s" in the database (time limit %dms)',
@@ -70,8 +70,8 @@ module.exports = (on, config) => {
 }
 
 // init for cypress-plugin-snapshots
-// const snapshotsPlugin = require('cypress-plugin-snapshots/plugin')
-// module.exports = (on, config) => {
-//   snapshotsPlugin.initPlugin(on, config)
-//   return config
-// }
+const snapshotsPlugin = require('cypress-plugin-snapshots/plugin')
+module.exports = (on, config) => {
+  snapshotsPlugin.initPlugin(on, config)
+  return config
+}
