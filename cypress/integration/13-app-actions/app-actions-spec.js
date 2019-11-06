@@ -106,4 +106,33 @@ describe('TodoMVC', function () {
             cy.get('.footer').should('not.exist')
         })
     })
+
+    context('Routing', function () {
+        const CHERRY_PIE = 'cherry pie'
+        const BANANA_SPLIT = 'banana split'
+        const COCONUT_CAKE = 'coconut cake'
+
+        const all = '[data-cy=show-all]'
+        const active = '[data-cy=show-active]'
+        const completed = '[data-cy=show-completed]'
+
+        it('should not show items or footer when todos are deleted', function () {
+            addTodos(CHERRY_PIE, BANANA_SPLIT, COCONUT_CAKE)
+            allItems()
+                .eq(0)
+                .as('firstTodo')
+
+            cy.get('@firstTodo')
+                .find('.toggle')
+                .check()
+
+            cy.get(active).click()
+                .url().should('eq', 'http://localhost:3000/#/active')
+            allItems().should('have.length', 2)
+
+            cy.get(completed).click()
+                .url().should('include', 'completed')
+            allItems().should('have.length', 1)
+        })
+    })
 })
