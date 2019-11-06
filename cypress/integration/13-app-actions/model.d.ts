@@ -8,6 +8,8 @@ interface TodoModel {
   addTodo(...todos: string[])
   toggle(item: unknown)
   inform()
+  destroy(item: unknown)
+  clearCompleted()
 }
 // During tests there we set "window.model" property
 // now cy.window() returns Window instance with

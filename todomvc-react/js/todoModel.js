@@ -1,6 +1,7 @@
 var app = app || {}
 
-;(function () {
+;
+(function () {
   'use strict'
 
   let Utils = app.Utils
@@ -44,7 +45,9 @@ var app = app || {}
     // we use map() and filter() everywhere instead of mutating the array or
     // "todo" items themselves.
     this.todos = this.todos.map(function (todo) {
-      return Utils.extend({}, todo, { completed: checked })
+      return Utils.extend({}, todo, {
+        completed: checked
+      })
     })
 
     this.inform()
@@ -52,15 +55,18 @@ var app = app || {}
 
   app.TodoModel.prototype.toggle = function (todoToToggle) {
     this.todos = this.todos.map(function (todo) {
-      return todo !== todoToToggle
-        ? todo
-        : Utils.extend({}, todo, { completed: !todo.completed })
+      return todo !== todoToToggle ?
+        todo :
+        Utils.extend({}, todo, {
+          completed: !todo.completed
+        })
     })
 
     this.inform()
   }
 
   app.TodoModel.prototype.destroy = function (todo) {
+    console.log(todo)
     this.todos = this.todos.filter(function (candidate) {
       return candidate !== todo
     })
@@ -70,9 +76,11 @@ var app = app || {}
 
   app.TodoModel.prototype.save = function (todoToSave, text) {
     this.todos = this.todos.map(function (todo) {
-      return todo !== todoToSave
-        ? todo
-        : Utils.extend({}, todo, { title: text })
+      return todo !== todoToSave ?
+        todo :
+        Utils.extend({}, todo, {
+          title: text
+        })
     })
 
     this.inform()

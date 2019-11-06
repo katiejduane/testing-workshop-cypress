@@ -54,14 +54,23 @@ export const addTodos = (...todos) => {
  */
 export const toggle = (k = 0) =>
   cy
-    .window()
-    .its('model')
-    .then(model => {
-      expect(k, 'check item index').to.be.lessThan(model.todos.length)
-      model.toggle(model.todos[k])
-    })
+  .window()
+  .its('model')
+  .then(model => {
+    expect(k, 'check item index').to.be.lessThan(model.todos.length)
+    model.toggle(model.todos[k])
+  })
 
 const ALL_ITEMS = '.todo-list li'
+
+export const destroy = (k = 0) => {
+  cy.window()
+    .its('model')
+    // .invoke('destroy', todo)
+    .then(model => {
+      model.destroy(model.todos[k])
+    })
+}
 
 /**
  * Returns all todo items on the page.
