@@ -133,6 +133,14 @@ describe('TodoMVC', function () {
             cy.get(completed).click()
                 .url().should('include', 'completed')
             allItems().should('have.length', 1)
+
+            // just to see what .debug() reveals!
+            // it seems different than debugger in that it doesn't totally pause everything?
+            // and reveals specific test related info in the console. tho... after a few saves,
+            // suddenly it does become paused in the debugger, tho cypress specific data is 
+            // still visible in the console... and you can 'unpause' as usual
+            cy.get(all)
+                .debug()
         })
     })
 })
